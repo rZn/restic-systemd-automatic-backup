@@ -17,32 +17,35 @@ Note, you can use any of the supported [storage backends](https://restic.readthe
 Tip: The steps in this section will instruct you to copy files from this repo to system directories. If you don't want to do this manually, you can use the Makefile:
 
 ```bash
-$ git clone https://github.com/erikw/restic-systemd-automatic-backup.git
+$ git clone https://github.com/rZn/restic-systemd-automatic-backup.git
 $ cd restic-systemd-automatic-backup
 $ sudo make install
 ````
 
 ### 1. Create Backblaze B2 account
 
-First, see this official Backblaze [tutorial](https://help.backblaze.com/hc/en-us/articles/115002880514-How-to-configure-Backblaze-B2-with-Restic-on-Linux) on restic, and follow the instructions ("Create Backblaze account with B2 enabled") there on how to create a new B2 bucket.
+#First, see this official Backblaze [tutorial](https://help.backblaze.com/hc/en-us/articles/115002880514-How-to-configure-Backblaze-B2-with-Restic-on-Linux) on restic, and follow the instructions ("Create Backblaze account with B2 enabled") there on how to create a new B2 bucket.
 
-Take note of the your account ID, application key and password for the next steps.
+#Take note of the your account ID, application key and password for the next steps.
+
+
+### 1. Create rclone restic account
 
 
 
 ### 2. Configure your B2 account locally
 Put these files in `/etc/restic/`:
-* `b2_env.sh`: Fill this file out with your B2 bucket settings etc. The reason for putting these in a separate file is that it can be used also for you to simply source, when you want to issue some restic commands. For example:
+* `rclone_env.sh`: Fill this file out with your rlone bucket settings etc. The reason for putting these in a separate file is that it can be used also for you to simply source, when you want to issue some restic commands. For example:
 ```bash
-$ source /etc/restic/b2_env.sh
+$ source /etc/restic/rclone_env.sh
 $ restic snapshots    # You don't have to supply all parameters like --repo, as they are now in your environment!
 ````
-* `b2_pw.txt`: This file should contain the restic repository password. This is a new password what soon will be used when initializing the new repository. It should be unique to this restic backup repository and is needed for restoring from it. Don't re-use your b2 login password, this should be different.
+* `repo_pw.txt`: This file should contain the restic repository password. This is a new password what soon will be used when initializing the new repository. It should be unique to this restic backup repository and is needed for restoring from it. Don't re-use your gdrive login password, this should be different.
 
 ### 3. Initialize remote repo
 Now we must initialize the repository on the remote end:
 ```bash
-source /etc/restic/b2_env.sh
+source /etc/restic/rclone_env.sh
 restic init
 ```
 

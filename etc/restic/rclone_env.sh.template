@@ -3,4 +3,4 @@
 # See https://restic.readthedocs.io/en/latest/030_preparing_a_new_repo.html
 
 export RESTIC_REPOSITORY="rclone:<GDRIVE_REPO-name>"
-export RESTIC_PASSWORD_FILE="etc/restic/GDRIVE_REPO_pw.txt"
+export RESTIC_PASSWORD_FILE="etc/restic/repo_pw.txt"
