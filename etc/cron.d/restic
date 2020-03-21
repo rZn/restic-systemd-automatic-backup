@@ -4,5 +4,6 @@ PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin/:/usr/local/sbin/
 # minute        hour    mday    month   wday    command
 # Reference: https://www.freebsd.org/doc/handbook/configtuning-cron.html
 # Reference: crontab(5).
+#@hourly 	root	cron_mail restic_backup.sh
 @midnight	root	cron_mail restic_backup.sh
 @monthly	root	cron_mail restic_check.sh
