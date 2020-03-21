@@ -22,18 +22,10 @@ $ cd restic-systemd-automatic-backup
 $ sudo make install
 ````
 
-### 1. Create Backblaze B2 account
-
-#First, see this official Backblaze [tutorial](https://help.backblaze.com/hc/en-us/articles/115002880514-How-to-configure-Backblaze-B2-with-Restic-on-Linux) on restic, and follow the instructions ("Create Backblaze account with B2 enabled") there on how to create a new B2 bucket.
-
-#Take note of the your account ID, application key and password for the next steps.
+### 1. Setup gdrive with rclone
 
 
-### 1. Create rclone restic account
-
-
-
-### 2. Configure your B2 account locally
+### 2. Configure your gdrive account locally
 Put these files in `/etc/restic/`:
 * `rclone_env.sh`: Fill this file out with your rlone bucket settings etc. The reason for putting these in a separate file is that it can be used also for you to simply source, when you want to issue some restic commands. For example:
 ```bash
