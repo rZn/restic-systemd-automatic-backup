@@ -6,6 +6,6 @@ Description=Backup with restic to gdrive with rclone
 [Service]
 Type=simple
 Nice=10
-ExecStart=/usr/local/sbin/restic_rlone_backup.sh
+ExecStart="rescript mr-root"
 # $HOME or $XDG_CACHE_HOME must be set for restic to find /root/.cache/restic/
 Environment="HOME=/root"
